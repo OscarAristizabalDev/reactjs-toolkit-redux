@@ -1,4 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
+import { PokemonAction } from './interfaces/interfaces';
 
 export const pokemonSlice = createSlice({
     name: 'pokemon',
@@ -9,10 +10,12 @@ export const pokemonSlice = createSlice({
     },
     reducers: {
         startLoadingPokemons: (state) => {
-            state.isLoading = true
+            state.isLoading = true;
         },
-        setPokemons: (state, action: PayloadAction<[]>) => {
-            state.pokemons = action.payload
+        setPokemons: (state, action: PayloadAction<PokemonAction>) => {
+            state.isLoading = false;
+            state.page = action.payload.page;
+            state.pokemons = action.payload.pokemons;
         }
     }
 });
