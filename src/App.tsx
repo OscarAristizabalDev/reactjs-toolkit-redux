@@ -1,10 +1,18 @@
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { RootState } from './store'
+import { increment } from './store/slices/counter'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  // el hook useSelector de react-redux permite leer datos del store
+  const { counter } = useSelector((state: RootState) => state.counter);
+  // el hook useDispatch de react-redux permite permite acceder a la acciones del store para
+  const dispatch = useDispatch();
 
   return (
     <div className="App">
@@ -18,16 +26,11 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
+        {/* Mediante el dispatch se hace el llamada a la función incrementar */}
+        <button onClick={() => { dispatch(increment()) }}>
+          count is {counter}
         </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
