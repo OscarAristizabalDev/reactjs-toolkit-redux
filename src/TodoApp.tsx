@@ -24,7 +24,7 @@ export const TodoApp = () => {
         <>
             <h1>Todos - RTK Query</h1>
             <hr />
-
+            <h3>Se utiliza RTK Query con ejemplo de manejo de cache, guarda en cache por un minuto las peticiones previas</h3>
 
             <h4>isLoading: {isLoading ? 'True' : 'False'}</h4>
 
